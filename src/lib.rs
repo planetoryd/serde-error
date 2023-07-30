@@ -98,3 +98,9 @@ impl std::fmt::Debug for Error {
         write!(f, "{}", self.description)
     }
 }
+
+impl From<anyhow::Error> for Error {
+    fn from(value: anyhow::Error) -> Self {
+        Self::new(&*value)       
+    }
+}
